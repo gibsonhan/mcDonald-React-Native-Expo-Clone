@@ -1,1 +1,0 @@
-/home/gibby/mcDonald-readct-native-clone/.eslintrc.js

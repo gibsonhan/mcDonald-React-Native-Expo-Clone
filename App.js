@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, SafeAreaView, ScrollView } from 'react-native';
 import AnnoucementCard from './components/AnnoucmentCard';
+import RewardCard from './components/RewardCard';
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <AnnoucementCard />
+      <RewardCard />
     </SafeAreaView>
   );
 }

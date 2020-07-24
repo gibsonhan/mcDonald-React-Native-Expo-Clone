@@ -4,16 +4,19 @@ export default {
     fontWeight: 'bold',
   },
   h2: {
-    fontSize: 16,
+    fontSize: 32,
+    fontWeight: 'bold',
   },
   h3: {
-    fontSize: 12,
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   h4: {
-    fontSize: 8,
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   l: {
-    fontSize: 20,
+    fontSize: 22,
   },
   regular: {
     fontSize: 16,
