@@ -28,8 +28,8 @@ const AnnoucmentCard = () => {
         </View>
       </View>
       <Text style={[GlobalText.s, styles.miniTextContainer]}>
-        Mobile Order & Pay at participating McDonald's. <br />
-        McD App registration required. © 2020 McDonald's
+        Mobile Order & Pay at participating McDonald's. McD App registration
+        required. © 2020 McDonald's
       </Text>
     </View>
   );
@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   buttonContainer: {
-    flex: 1.2,
+    flex: 1,
     justifyContent: 'center',
   },
   miniTextContainer: {
     color: `${GlobalColor.grey}`,
-    marginBottom: 'auto',
+    paddingTop: 10,
     paddingLeft: 20,
   },
 });
