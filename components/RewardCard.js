@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 20,
     paddingHorizontal: 20,
+    maxWidth: 800,
   },
   miniText: {
     color: `${GlobalColor.grey}`,

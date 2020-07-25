@@ -5,5 +5,6 @@ export default {
   mdBrown: '#952E19', //TODO [] Check the brown
   dkBrown: '#654321',
   grey: '#838382',
+  mdGrey: '#C0C0C0',
   lightGrey: '#F7F6F4',
 };

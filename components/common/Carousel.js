@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  ScrollView,
-  Image,
-  Text,
-  View,
-  StyleSheet,
-  InteractionManager,
-} from 'react-native';
+import { ScrollView, Image, Text, View, StyleSheet } from 'react-native';
 import GlobalText from '../../style/Text';
 
 const Carousel = ({ items }) => {
@@ -15,7 +8,7 @@ const Carousel = ({ items }) => {
       <ScrollView
         horizontal={true}
         decelerationRate="fast"
-        //onContentSizeChange={(w, h) => console.log(w, h)} --> not sure what t
+        //onContentSizeChange={(w, h) => console.log(w, h)} --> not sure how this fits in with resizeing
         contentContainerStyle={{ width: 200 }}
         scrollEventThrottle={200}
         showsHorizontalScrollIndicator={false}
