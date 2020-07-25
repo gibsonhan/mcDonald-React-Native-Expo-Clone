@@ -20,7 +20,7 @@ const CarouselCard = ({ title, titleNav, items }) => {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    paddingHorizontal: 20,
+    paddingLeft: 20,
     width: '100vw',
   },
   titleContainer: {

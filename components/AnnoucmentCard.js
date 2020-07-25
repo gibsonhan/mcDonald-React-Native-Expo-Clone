@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     height: 280,
     paddingLeft: 20,
-    paddingVertical: 30,
+    paddingTop: 5,
     backgroundColor: 'yellow',
   },
   textContainer: {

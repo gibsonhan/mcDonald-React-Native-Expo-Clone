@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 2,
     justifyContent: 'space-evenly',
-    maxWidth: '70%',
   },
   btnContainer: {
     flex: 1,
