@@ -45,7 +45,6 @@ const RewardCard = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'column',
-    width: '100%',
     marginTop: 20,
     paddingHorizontal: 20,
     maxWidth: 800,
@@ -59,6 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: `${GlobalColor.yellow}`,
     justifyContent: 'space-evenly',
     height: 220,
+    marginTop: 10,
     paddingLeft: 20,
     paddingVertical: 20,
     borderRadius: 8,
