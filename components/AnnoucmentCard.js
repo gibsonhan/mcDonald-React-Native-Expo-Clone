@@ -4,7 +4,7 @@ import GlobalText from '../style/Text';
 import GlobalColor from '../style/Color';
 import Btn from '../components/common/Btn';
 
-const AnnoucmentCard = () => {
+const AnnoucmentCard = ({ navigation }) => {
   const [annoucement, setAnnoucement] = useState({});
   function selectAnnoucment() {
     const annoucmentCards = [
@@ -15,7 +15,7 @@ const AnnoucmentCard = () => {
         titleContent: 'Order extra in the App',
         btnText: 'Start Order',
         btnColor: `${GlobalColor.yellow}`,
-        navLink: '',
+        navLink: 'Order',
         dateRestriction: 'None',
         legal:
           "Mobile Order & Pay at participating McDonald's. McD App registration required. © 2020 McDonald's",
@@ -27,10 +27,22 @@ const AnnoucmentCard = () => {
         titleContent2: '$1 Mobile Order & Pay purchase',
         btnText: 'View Deals',
         btnColor: `${GlobalColor.lightGrey}`,
-        navLink: '',
+        navLink: 'Deals',
         dateRestriction: 'Friday',
         legal:
           "Get free Medium Fries with a minium $1 Mobile Order & Pay purchase, tax excl. Valid 1x/ Friday thru 9/27 at participating McD. Mobile Order & Pay at participating McD. McD app registration required. © 2020 McDonald's ",
+      },
+      {
+        img: '',
+        title: 'Meanwhile,',
+        title2: 'at Curbside',
+        titleContent: 'Sitback & amswer 1 email',
+        btnText: 'Start Order',
+        btnColor: `${GlobalColor.yellow}`,
+        navLink: 'Order',
+        dateRestriction: 'None',
+        legal:
+          "Mobile Order & Pay at participating McDonald's. McD App registration required. © 2020 McDonald's",
       },
     ];
 
@@ -61,6 +73,7 @@ const AnnoucmentCard = () => {
             text={annoucement.btnText}
             textColor={GlobalColor.dkBrown}
             color={GlobalColor.yellow}
+            onPress={() => navigation.navigate(annoucement.navLink)}
           />
         </View>
       </View>

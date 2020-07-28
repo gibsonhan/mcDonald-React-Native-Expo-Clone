@@ -1,41 +1,34 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-import AnnoucementCard from './components/AnnoucmentCard';
-import RewardCard from './components/RewardCard';
-import CarouselCard from './components/CarouselCard';
-import Trending from './components/Trending';
-import Header from './components/Header';
-import BottomNav from './components/BottomNav';
+import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
 
-const menuItems = [
-  { title: 'Sandwiches & Meal', img: '' },
-  { title: 'Happy Meal', img: '' },
-  { title: 'McCafe', img: '' },
-  { title: 'Fries & Sides', img: '' },
-  { title: 'Sweets & Treats', img: '' },
-];
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Home from './screens/Home';
+import Order from './screens/Order';
+import Deals from './screens/Deals';
+import Recent from './screens/Recent';
+import More from './screens/More';
+import ErrorScreen from './screens/Error';
+
+import Coupon from './screens/Coupon';
+
+const Stack = createStackNavigator();
+
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Header />
-      <ScrollView>
-        <AnnoucementCard />
-        <RewardCard />
-        <CarouselCard title="Menu" titleNav={'Full menu >'} items={menuItems} />
-        <Trending />
-      </ScrollView>
-      <BottomNav />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Deals">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Order" component={Order} />
+        <Stack.Screen name="Deals" component={Deals} />
+        <Stack.Screen name="Recent" component={Recent} />
+        <Stack.Screen name="More" component={More} />
+        <Stack.Screen name="Error" component={ErrorScreen} />
+        <Stack.Screen name="Coupon" component={Coupon} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 //https://stackoverflow.com/questions/55264425/is-there-a-fixed-header-or-sticky-header-for-react-native
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

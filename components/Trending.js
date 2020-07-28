@@ -11,7 +11,7 @@ const trendingCards = [
     titleContent: '$1 Large Fries in the App',
     btnText: 'Get Deal',
     btnColor: `${GlobalColor.lightGrey}`,
-    navLink: '',
+    navLink: 'Deals',
     legal:
       "Valid thru 9/17/20 at participating McDonald's Mobile App registration required. © 2020 McDonald's",
   },
@@ -21,7 +21,7 @@ const trendingCards = [
     titleContent2: 'Pink Lemonade Slushie',
     btnText: 'Order Now',
     btnColor: `${GlobalColor.yellow}`,
-    navLink: '',
+    navLink: 'Slushie',
     legal:
       "Avaliable at participating McDonald's Mobile order & Pay at participating McDonald's Mobile App registration required. ®",
   },
@@ -37,12 +37,12 @@ const trendingCards = [
   },
 ];
 
-const Trending = () => {
+const Trending = ({ navigation }) => {
   return (
     <View styles={styles.mainContainer}>
       <Text style={[GlobalText.h1, { margin: 20 }]}>Trending</Text>
       {trendingCards.map((card, idx) => (
-        <SingleCard key={idx} props={card} />
+        <SingleCard key={idx} props={card} navigation={navigation} />
       ))}
     </View>
   );

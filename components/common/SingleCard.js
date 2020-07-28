@@ -4,7 +4,7 @@ import GlobalText from '../../style/Text';
 import GlobalColor from '../../style/Color';
 
 import Btn from './Btn';
-const SingleCard = ({ props }) => {
+const SingleCard = ({ props, navigation }) => {
   const {
     title,
     title2,
@@ -14,6 +14,7 @@ const SingleCard = ({ props }) => {
     btnTextColor,
     btnColor,
     legal,
+    navLink,
   } = props;
   return (
     <View style={styles.mainContainer}>
@@ -29,7 +30,12 @@ const SingleCard = ({ props }) => {
           </Text>
         </View>
         <View style={styles.btnContainer}>
-          <Btn text={btnText} color={btnColor} textColor={btnTextColor} />
+          <Btn
+            text={btnText}
+            color={btnColor}
+            textColor={btnTextColor}
+            onPress={() => navigation.navigate(navLink)}
+          />
         </View>
       </View>
       <Text style={[GlobalText.s, styles.legalText]}>{legal}</Text>

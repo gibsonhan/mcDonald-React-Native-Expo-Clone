@@ -4,7 +4,8 @@ import GlobalText from '../style/Text';
 
 import Carousel from './common/Carousel';
 
-const CarouselCard = ({ title, titleNav, items }) => {
+const CarouselCard = ({ title, titleNav, items, navigation }) => {
+  console.log('check nav', navigation);
   return (
     <View style={styles.mainContainer}>
       <View style={styles.titleContainer}>
@@ -13,7 +14,7 @@ const CarouselCard = ({ title, titleNav, items }) => {
           <Text style={[GlobalText.h3, { color: 'blue' }]}>{titleNav}</Text>
         </View>
       </View>
-      <Carousel items={items} />
+      <Carousel items={items} navigation={navigation} />
     </View>
   );
 };

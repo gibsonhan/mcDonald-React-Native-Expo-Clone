@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, Image, Text, View, StyleSheet } from 'react-native';
 import GlobalText from '../../style/Text';
 
-const Carousel = ({ items }) => {
+const Carousel = ({ items, navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView

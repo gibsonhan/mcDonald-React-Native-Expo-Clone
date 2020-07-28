@@ -2,8 +2,9 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import GlobalText from '../style/Text';
 import GlobalColor from '../style/Color';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const RewardCard = () => {
+const RewardCard = ({ navigation }) => {
   const profile = {
     McCafeReward: 1,
   };
@@ -23,7 +24,7 @@ const RewardCard = () => {
   }
   //TODO: GET an image of McCafe, and Absolute position it int there
   return (
-    <View style={styles.mainContainer}>
+    <TouchableOpacity style={styles.mainContainer}>
       <Text style={GlobalText.h2}>Your McCafe Reward</Text>
       <View style={styles.cardContainer}>
         <Text style={GlobalText.h2}>Get A</Text>
@@ -38,7 +39,7 @@ const RewardCard = () => {
         *Offer valid only for full-price McCafe drinks. <br /> Valid at part.
         McD thru 09/27/20
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
