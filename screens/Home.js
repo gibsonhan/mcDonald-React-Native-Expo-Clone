@@ -8,11 +8,11 @@ import RewardCard from '../components/RewardCard';
 import Trending from '../components/Trending';
 
 const menuItems = [
-  { title: 'Sandwiches & Meal', img: '' },
-  { title: 'Happy Meal', img: '' },
-  { title: 'McCafe', img: '' },
-  { title: 'Fries & Sides', img: '' },
-  { title: 'Sweets & Treats', img: '' },
+  { title: 'Sandwiches & Meal', img: '123', key: 'sandAndMeal' },
+  { title: 'Happy Meal', img: '', key: 'happyMeals' },
+  { title: 'McCafe', img: '', key: 'mcCafe' },
+  { title: 'Fries & Sides', img: '', key: 'friesAndSide' },
+  { title: 'Sweets & Treats', img: '', key: 'sweetsAndTreats' },
 ];
 
 //TODO setup appcontext to

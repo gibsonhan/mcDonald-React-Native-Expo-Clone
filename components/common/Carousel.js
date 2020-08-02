@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, Image, Text, View, StyleSheet } from 'react-native';
 import GlobalText from '../../style/Text';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Carousel = ({ items, navigation }) => {
   return (
@@ -15,19 +16,22 @@ const Carousel = ({ items, navigation }) => {
         pagingEnabled
       >
         {items.map((item, i) => (
-          <Item key={i} title={item.title} img={item.img} />
+          <Item key={i} props={item} navigation={navigation} />
         ))}
       </ScrollView>
     </View>
   );
 };
 
-const Item = ({ img, title, screenLink }) => {
+const Item = ({ props, navigation }) => {
+  const { img, title } = props;
+  console.log('items', props);
+  const navigate = () => navigation.navigate('MenuList', props);
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={navigate}>
       <Image style={styles.image} />
       <Text style={[GlobalText.r, styles.text]}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -1,18 +1,20 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import GlobalText from '../style/Text';
 
 import Carousel from './common/Carousel';
 
 const CarouselCard = ({ title, titleNav, items, navigation }) => {
-  console.log('check nav', navigation);
   return (
     <View style={styles.mainContainer}>
       <View style={styles.titleContainer}>
         <Text style={GlobalText.h2}>{title}</Text>
-        <View style={{ justifyContent: 'center' }}>
+        <TouchableOpacity
+          style={{ justifyContent: 'center', marginRight: 20 }}
+          onPress={() => navigation.navigate('Order')}
+        >
           <Text style={[GlobalText.h3, { color: 'blue' }]}>{titleNav}</Text>
-        </View>
+        </TouchableOpacity>
       </View>
       <Carousel items={items} navigation={navigation} />
     </View>

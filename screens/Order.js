@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
 
-const Order = () => {
+import GlobalText from '../style/Text';
+
+const Order = ({ route, navigate }) => {
   return (
     <View style={styles.mainContainer}>
       <View>
@@ -21,6 +23,9 @@ const Order = () => {
         data={ExploreMenu}
         keyExtractor={(item) => item.text}
         renderItem={({ item }) => <Text>{item.text}</Text>}
+        ListHeaderComponent={
+          <Text style={GlobalText.h3}>{'Expore our Menu'}</Text>
+        }
       />
     </View>
   );

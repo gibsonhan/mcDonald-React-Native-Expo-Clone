@@ -12,20 +12,46 @@ import More from './screens/More';
 import ErrorScreen from './screens/Error';
 
 import Coupon from './screens/Coupon';
+import QRCode from './screens/QRCode.js';
+import Item from './screens/Item.js';
+
+import MenuList from './screens/MenuList';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Deals">
+      <Stack.Navigator initialRouteName="Home">
+        {/**Main Screen */}
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Order" component={Order} />
         <Stack.Screen name="Deals" component={Deals} />
         <Stack.Screen name="Recent" component={Recent} />
         <Stack.Screen name="More" component={More} />
+        {/** Call to Action screen */}
+        <Stack.Screen
+          name="Coupon"
+          component={Coupon}
+          options={({ route }) => ({ title: route.params.title })}
+        />
+        <Stack.Screen
+          name="QRCode"
+          component={QRCode}
+          options={({ route }) => ({ title: 'specificOption?' })}
+        />
+        <Stack.Screen
+          name="Item"
+          component={Item}
+          options={({ route }) => ({ title: 'ItemOption' })}
+        />
+        <Stack.Screen
+          name="MenuList"
+          component={MenuList}
+          options={({ route }) => ({ title: route.params.title })}
+        />
+        {/** Info Screen */}
         <Stack.Screen name="Error" component={ErrorScreen} />
-        <Stack.Screen name="Coupon" component={Coupon} />
       </Stack.Navigator>
     </NavigationContainer>
   );
