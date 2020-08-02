@@ -39,7 +39,9 @@ const Deals = ({ navigation }) => {
         )}
         style={{ marginTop: 20 }}
         ListHeaderComponent={
-          <Text style={GlobalText.h3}>{'Your Daily Deals'}</Text>
+          <Text style={[GlobalText.h2, { marginLeft: 20 }]}>
+            {'Your Daily Deals'}
+          </Text>
         }
       />
     </View>
@@ -69,9 +71,6 @@ const CouponTicket = ({ route, navigation, props }) => {
           <Text style={[GlobalText.s, { color: `${GlobalColor.grey}` }]}>
             {expiration}
           </Text>
-        </View>
-        <View>
-          <Text> </Text>
         </View>
       </View>
     </TouchableOpacity>
