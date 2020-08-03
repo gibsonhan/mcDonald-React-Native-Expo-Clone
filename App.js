@@ -22,10 +22,15 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Order">
         {/**Main Screen */}
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Order" component={Order} />
+        {/*Think about when is it benefical to pass param on the screen level*/}
+        <Stack.Screen
+          name="Order"
+          component={Order}
+          option={({ route }) => ({ title: route.params.tile })}
+        />
         <Stack.Screen name="Deals" component={Deals} />
         <Stack.Screen name="Recent" component={Recent} />
         <Stack.Screen name="More" component={More} />
