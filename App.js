@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Order">
+      <Stack.Navigator initialRouteName="Home">
         {/**Main Screen */}
         <Stack.Screen name="Home" component={Home} />
         {/*Think about when is it benefical to pass param on the screen level*/}

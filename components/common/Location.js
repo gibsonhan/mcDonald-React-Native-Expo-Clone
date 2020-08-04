@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: 20,
-    height: 100,
+    marginTop: 10,
+    height: 80,
   },
   textContainer: {
     flex: 1,

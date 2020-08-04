@@ -5,7 +5,7 @@ import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
 import GlobalText from '../style/Text';
 import LocationCard from '../components/common/Location';
 import ReorderCard from '../components/ReorderCard';
-//import SearchCard from '../components/common/Search';
+import SearchCard from '../components/common/Search';
 import Navigate from '../components/common/Navigate';
 
 const Order = ({ route, navigation }) => {
@@ -36,7 +36,7 @@ const NavigationCard = ({ navigation }) => {
         <Navigate props={item} navigation={navigation} />
       )}
       ListHeaderComponent={
-        <Text style={GlobalText.h3}>{'Expore our Menu'}</Text>
+        <Text style={[GlobalText.h2, { margin: 20 }]}>{'Expore our Menu'}</Text>
       }
     />
   );
