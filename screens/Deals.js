@@ -10,20 +10,23 @@ const DealList = [
   {
     title: '2 for $3 McChicken or McDouble',
     titleContext: 'Daily Deal!',
-    expiration: 'Offer expires today',
+    expiration: 'today',
     ribbonTxt: 'Daily Deal!',
+    qrcode: '',
   },
   {
-    title: '2 for $3 McChicken or McDouble2',
-    titleContext: 'Daily Deal!',
-    expiration: 'Offer expires today',
+    title: 'Buy one Breakfast Sandwich, get one FREE',
+    titleContext: 'Breakfast Hours Only',
+    expiration: 'today',
     ribbonTxt: 'Daily Deal!',
+    qrcode: '',
   },
   {
-    title: '2 for $3 McChicken or McDouble1',
+    title: 'Buy a Combo Meal, get a McFlurry Free',
     titleContext: 'Daily Deal!',
-    expiration: 'Offer expires today',
+    expiration: 'today',
     ribbonTxt: 'Daily Deal!',
+    qrcode: '',
   },
 ];
 
@@ -50,6 +53,7 @@ const Deals = ({ navigation }) => {
 
 const CouponTicket = ({ route, navigation, props }) => {
   const { title, titleContext, expiration } = props;
+  console.log('route', route);
   return (
     <TouchableOpacity
       style={styles.couponContainer}
@@ -69,7 +73,7 @@ const CouponTicket = ({ route, navigation, props }) => {
         </View>
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text style={[GlobalText.s, { color: `${GlobalColor.grey}` }]}>
-            {expiration}
+            Offer Expires {expiration}
           </Text>
         </View>
       </View>

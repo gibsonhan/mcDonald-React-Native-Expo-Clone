@@ -5,19 +5,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import GlobalColor from '../../style/Color';
 import GlobalText from '../../style/Text';
 
-const Coupon = ({ route, navigation, props }) => {
+const Coupon = ({ navigation, props }) => {
   const { title, titleContext, expiration, CAT } = props;
-  console.log('props', props, CAT, route);
-  //console.log('r', route);
-  //console.log('n', navigation);
-  //console.log('p', props);
-
   const navigate =
     CAT === true
       ? () => console.log('no navigation')
-      : () => {
-          navigation.navigate('Coupon', props);
-        };
+      : () => navigation.navigate('Coupon', props);
+
   return (
     <TouchableOpacity style={styles.couponContainer} onPress={navigate}>
       <View style={styles.couponBar}>

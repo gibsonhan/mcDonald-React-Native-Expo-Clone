@@ -25,7 +25,6 @@ const Carousel = ({ items, navigation }) => {
 
 const Item = ({ props, navigation }) => {
   const { img, title } = props;
-  console.log('items', props);
   const navigate = () => navigation.navigate('MenuList', props);
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={navigate}>

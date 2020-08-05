@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View, Text } from 'react-native';
-
+import { enableScreens } from 'react-native-screens';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -18,11 +17,12 @@ import Item from './screens/Item.js';
 import MenuList from './screens/MenuList';
 
 const Stack = createStackNavigator();
+enableScreens();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Recent">
         {/**Main Screen */}
         <Stack.Screen name="Home" component={Home} />
         {/*Think about when is it benefical to pass param on the screen level*/}

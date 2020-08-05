@@ -41,13 +41,14 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   couponContainer: {
-    flex: 2,
+    flex: 3,
+    alignItems: 'center',
     justifyContent: 'center',
   },
   catContainer: {
-    flex: 1,
+    flex: 2,
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   moreNavContainer: {

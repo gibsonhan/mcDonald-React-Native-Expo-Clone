@@ -8,7 +8,7 @@ export default {
     fontWeight: 'bold',
   },
   h3: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   h4: {
