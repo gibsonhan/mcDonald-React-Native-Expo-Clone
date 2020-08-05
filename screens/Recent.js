@@ -89,6 +89,9 @@ const RecentOrder = ({ navigation }) => {
     <View>
       <Text>Recent</Text>
       <FlatList
+        data={[0, 1, 2, 3, 4, 5, 6]}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => <RecentOrderCard />}
         ListFooterComponent={
           <TouchableOpacity onPress={navigate}>
             <Text style={{ color: 'blue' }}>View Menu</Text>
@@ -101,10 +104,17 @@ const RecentOrder = ({ navigation }) => {
 
 const FavoriteList = ({ navigation }) => {
   const [favEmpty, setFavEmpty] = useState(true);
-  useEffect(() => {}, []);
+  const data = [0, 1, 2, 3, 4, 5, 6];
+  useEffect(() => {
+    data.length === 0 ? setFavEmpty(true) : setFavEmpty(false);
+  }, [data.length]);
   return (
     <View>
-      <FlatList />
+      <FlatList
+        data={data}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => <RecentOrderCard />}
+      />
       {favEmpty && <EmptyFavorite navigation={navigation} />}
     </View>
   );
@@ -127,6 +137,41 @@ const EmptyFavorite = ({ navigation }) => {
       <TouchableOpacity onPress={navigate}>
         <Text style={{ color: 'blue' }}>Start an Order</Text>
       </TouchableOpacity>
+    </View>
+  );
+};
+
+const RecentOrderCard = () => {
+  //look at the menu drop down tutorial
+  let orderlist = [0, 1, 2, 3];
+  const showOrderList = orderlist.length > 1 ? true : false;
+  return (
+    <View>
+      <Text> Past Order</Text>
+      <Text>Date of purchate - Time of Purchase</Text>
+      {showOrderList && (
+        <TouchableOpacity>
+          <Text>View Order</Text>
+        </TouchableOpacity>
+      )}
+    </View>
+  );
+};
+
+const RecentItem = () => {
+  return (
+    <View>
+      <View>
+        <Text>Image</Text>
+        <Text>Customization</Text>
+      </View>
+      <View>
+        <Text>Start</Text>
+        <TouchableOpacity>
+          <Text>Add to Favorites</Text>
+          <Text>Favorited</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
