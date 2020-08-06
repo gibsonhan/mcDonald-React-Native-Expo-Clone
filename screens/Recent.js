@@ -176,6 +176,30 @@ const RecentItem = () => {
   );
 };
 
+const FavoriteItem = ({ props, navigation }) => {
+  const { title, customized } = props;
+
+  function unfavorateAction() {
+    console.log('functionwill unfavorite the star');
+  }
+
+  return (
+    <TouchableOpacity>
+      <Text>Image</Text>
+      <View>
+        <Text> Title</Text>
+        <TouchableOpacity onPress={() => unfavorateAction()}>
+          <Text>Start</Text>
+          {!!customized && <Text>Favorite</Text>}
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity>
+        <Text>Add to Order</Text>
+      </TouchableOpacity>
+    </TouchableOpacity>
+  );
+};
+
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
