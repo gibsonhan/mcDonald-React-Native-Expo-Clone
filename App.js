@@ -22,7 +22,7 @@ enableScreens();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Recent">
+      <Stack.Navigator initialRouteName="Home">
         {/**Main Screen */}
         <Stack.Screen name="Home" component={Home} />
         {/*Think about when is it benefical to pass param on the screen level*/}
@@ -48,7 +48,7 @@ export default function App() {
         <Stack.Screen
           name="Item"
           component={Item}
-          options={({ route }) => ({ title: 'ItemOption' })}
+          options={({ route }) => ({ title: 'Item' })}
         />
         <Stack.Screen
           name="MenuList"

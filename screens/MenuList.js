@@ -9,7 +9,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const MenuList = ({ route, navigation }) => {
   const props = route.params;
-  const data = tempData['SandWhichAndMeals'];
+  const data = tempData.SandWhichAndMeals;
   return (
     <View style={styles.mainContainer}>
       <View style={styles.listContainer}>
@@ -34,7 +34,6 @@ const ItemGroupNav = () => {
 const MenuItem = ({ props, navigation }) => {
   const { title, img, featured, standardPrice, mealPrice } = props;
   const navigate = () => navigation.navigate('Item');
-
   return (
     <TouchableOpacity style={styles.menuItemContainer} onPress={navigate}>
       <View style={styles.menuItemImage}>
@@ -44,16 +43,16 @@ const MenuItem = ({ props, navigation }) => {
         {!!featured && <Text> Featured </Text>}
         <Text style={{ fontWeight: 'bold' }}>{title}</Text>
         <Text>
-          {'$' + standardPrice['price'] + ' ' + standardPrice['cal'] + ' Cal.'}
+          {'$' + standardPrice.price + ' ' + standardPrice.cal + ' Cal.'}
         </Text>
         <Text> Meal </Text>
         <Text>
           {'$' +
-            mealPrice['price'] +
+            mealPrice.price +
             ' ' +
-            mealPrice['cal'][0] +
+            mealPrice.cal[0] +
             ' - ' +
-            mealPrice['cal'][1] +
+            mealPrice.cal[1] +
             ' Cal.'}
         </Text>
       </View>
