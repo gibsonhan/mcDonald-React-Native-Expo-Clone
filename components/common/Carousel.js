@@ -4,6 +4,7 @@ import GlobalText from '../../style/Text';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Carousel = ({ items, navigation }) => {
+  console.log('chekcking items', items);
   return (
     <View style={{ flex: 1 }}>
       <ScrollView
@@ -24,12 +25,12 @@ const Carousel = ({ items, navigation }) => {
 };
 
 const Item = ({ props, navigation }) => {
-  const { img, title } = props;
+  const { img, name } = props;
   const navigate = () => navigation.navigate('MenuList', props);
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={navigate}>
       <Image style={styles.image} />
-      <Text style={[GlobalText.r, styles.text]}>{title}</Text>
+      <Text style={[GlobalText.r, styles.text]}>{name}</Text>
     </TouchableOpacity>
   );
 };

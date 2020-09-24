@@ -15,6 +15,7 @@ import QRCode from './screens/QRCode.js';
 import Item from './screens/Item.js';
 
 import MenuList from './screens/MenuList';
+import { HOME, ORDER } from './global/reserveWord';
 
 const Stack = createStackNavigator();
 enableScreens();
@@ -22,14 +23,14 @@ enableScreens();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName={HOME}>
         {/**Main Screen */}
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name={HOME} component={Home} />
         {/*Think about when is it benefical to pass param on the screen level*/}
         <Stack.Screen
-          name="Order"
+          name={ORDER}
           component={Order}
-          option={({ route }) => ({ title: route.params.tile })}
+          option={({ route }) => ({ title: route.params.title })}
         />
         <Stack.Screen name="Deals" component={Deals} />
         <Stack.Screen name="Recent" component={Recent} />
