@@ -6,8 +6,6 @@ import Carousel from './common/Carousel';
 import { ORDER } from '../global/reserveWord';
 
 const CarouselCard = ({ title, titleNav, items, navigation }) => {
-  console.log(navigation);
-  console.log('what is item', items);
   return (
     <View style={styles.mainContainer}>
       <View style={styles.titleContainer}>

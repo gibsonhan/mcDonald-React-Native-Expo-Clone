@@ -1,10 +1,10 @@
 import React from 'react';
 import { ScrollView, Image, Text, View, StyleSheet } from 'react-native';
-import GlobalText from '../../style/Text';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import GlobalText from '../../style/Text';
+
 const Carousel = ({ items, navigation }) => {
-  console.log('chekcking items', items);
   return (
     <View style={{ flex: 1 }}>
       <ScrollView
@@ -25,11 +25,19 @@ const Carousel = ({ items, navigation }) => {
 };
 
 const Item = ({ props, navigation }) => {
-  const { img, name } = props;
-  const navigate = () => navigation.navigate('MenuList', props);
+  const { img, name, navLink } = props;
+  const navigate = () =>
+    navigation.navigate(navLink, { title: name, data: props });
   return (
     <TouchableOpacity style={styles.itemContainer} onPress={navigate}>
-      <Image style={styles.image} />
+      <Image
+        style={styles.image}
+        source={{
+          uri:
+            img ||
+            'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
+        }}
+      />
       <Text style={[GlobalText.r, styles.text]}>{name}</Text>
     </TouchableOpacity>
   );

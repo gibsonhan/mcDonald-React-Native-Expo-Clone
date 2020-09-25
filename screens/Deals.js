@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import RewardCard from '../components/RewardCard';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import { COUPON } from '../global/reserveWord';
 import GlobalColor from '../style/Color';
 import GlobalText from '../style/Text';
 
@@ -58,7 +59,7 @@ const CouponTicket = ({ route, navigation, props }) => {
     <TouchableOpacity
       style={styles.couponContainer}
       onPress={() => {
-        navigation.navigate('Coupon', { ...props, CAT: true });
+        navigation.navigate(COUPON, { ...props, CAT: true });
       }}
     >
       <View style={styles.couponBar}>

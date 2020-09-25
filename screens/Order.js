@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
+
+import axios from 'axios';
 
 import GlobalText from '../style/Text';
 import LocationCard from '../components/common/Location';
@@ -9,13 +11,26 @@ import SearchCard from '../components/common/Search';
 import Navigate from '../components/common/Navigate';
 
 const Order = ({ route, navigation }) => {
-  console.log(route, navigation);
+  const [menu, setMenu] = useState([]);
+
+  useEffect(() => {
+    async function fetchMenu() {
+      try {
+        let response = await axios.get('http://localhost:3001/api/menu');
+        setMenu(response.data);
+      } catch (error) {
+        console.log('failed to catche error', error);
+      }
+    }
+    fetchMenu();
+  }, []);
+
   return (
     <View style={styles.mainContainer}>
       <LocationCard />
       <SearchCard />
       <ReorderCard navigation={navigation} />
-      <NavigationCard data={ExploreMenu} navigation={navigation} />
+      <NavigationCard data={menu} navigation={navigation} />
     </View>
   );
 };
@@ -27,10 +42,10 @@ const PastOrder = [
   },
 ];
 
-const NavigationCard = ({ navigation }) => {
+const NavigationCard = ({ data, navigation }) => {
   return (
     <FlatList
-      data={ExploreMenu}
+      data={data}
       keyExtractor={(item) => item.title}
       renderItem={({ item }) => (
         <Navigate props={item} navigation={navigation} />
@@ -41,18 +56,6 @@ const NavigationCard = ({ navigation }) => {
     />
   );
 };
-
-const ExploreMenu = [
-  { img: '', title: 'Deals', navLink: 'Deals' },
-  { img: '', title: 'Sandwiches & Meals', navLink: 'MenuList' },
-  { img: '', title: 'Promotions', navLink: 'MenuList' },
-  { img: '', title: 'Sweets & Treets', navLink: 'MenuList' },
-  { img: '', title: 'HappyMeal', navLink: 'MenuList' },
-  { img: '', title: 'Fries, Side, & More', navLink: 'MenuList' },
-  { img: '', title: 'McCafe', navLink: 'MenuList' },
-  { img: '', title: 'Beverages', navLink: 'MenuList' },
-  { img: '', title: '$1 $2 $3 Dollar Menu', navLink: 'MenuList' },
-];
 
 const styles = StyleSheet.create({
   mainContainer: {},

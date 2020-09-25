@@ -2,16 +2,23 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import GlobalText from '../../style/Text';
 //TODO map out the react app tree structure
+
 const Navigate = ({ props, navigation }) => {
-  const { img, title, navLink } = props;
-  const navigate = () => navigation.navigate(navLink, { title: title });
+  const { img, name, navLink } = props;
+  const navigate = () =>
+    navigation.navigate(navLink, { title: name, data: props });
   return (
     <TouchableOpacity style={styles.mainContainer} onPress={navigate}>
-      <View style={styles.imgContainer}>
-        <Text style={styles.imgContainer}> {img + '1'} </Text>
-      </View>
+      <Image
+        style={styles.imgContainer}
+        source={{
+          uri:
+            img ||
+            'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
+        }}
+      />
       <View style={styles.txtContainer}>
-        <Text style={[GlobalText.h3]}> {title} </Text>
+        <Text style={[GlobalText.h3]}> {name} </Text>
         <Text style={[GlobalText.h2]}> > </Text>
       </View>
     </TouchableOpacity>

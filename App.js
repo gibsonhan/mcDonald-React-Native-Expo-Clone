@@ -15,7 +15,18 @@ import QRCode from './screens/QRCode.js';
 import Item from './screens/Item.js';
 
 import MenuList from './screens/MenuList';
-import { HOME, ORDER } from './global/reserveWord';
+import {
+  COUPON,
+  DEALS,
+  ERROR,
+  HOME,
+  ITEM,
+  ORDER,
+  RECENT,
+  MENULIST,
+  MORE,
+  QRCODE,
+} from './global/reserveWord';
 
 const Stack = createStackNavigator();
 enableScreens();
@@ -32,32 +43,32 @@ export default function App() {
           component={Order}
           option={({ route }) => ({ title: route.params.title })}
         />
-        <Stack.Screen name="Deals" component={Deals} />
-        <Stack.Screen name="Recent" component={Recent} />
-        <Stack.Screen name="More" component={More} />
+        <Stack.Screen name={DEALS} component={Deals} />
+        <Stack.Screen name={RECENT} component={Recent} />
+        <Stack.Screen name={MORE} component={More} />
         {/** Call to Action screen */}
         <Stack.Screen
-          name="Coupon"
+          name={COUPON}
           component={Coupon}
           options={({ route }) => ({ title: route.params.title })}
         />
         <Stack.Screen
-          name="QRCode"
+          name={QRCODE}
           component={QRCode}
           options={({ route }) => ({ title: 'specificOption?' })}
         />
         <Stack.Screen
-          name="Item"
+          name={ITEM}
           component={Item}
-          options={({ route }) => ({ title: 'Item' })}
+          options={({ route }) => ({ title: ITEM })}
         />
         <Stack.Screen
-          name="MenuList"
+          name={MENULIST}
           component={MenuList}
           options={({ route }) => ({ title: route.params.title })}
         />
         {/** Info Screen */}
-        <Stack.Screen name="Error" component={ErrorScreen} />
+        <Stack.Screen name={ERROR} component={ErrorScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

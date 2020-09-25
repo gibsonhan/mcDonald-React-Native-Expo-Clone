@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
 
 import GlobalText from '../style/Text';
 import GlobalColor from '../style/Color';
 
 import tempData from '../data/menuList';
+import { ITEM, ORDER } from '../global/reserveWord';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const MenuList = ({ route, navigation }) => {
-  const props = route.params;
+const MenuList = ({ route, navigation, props }) => {
   const data = tempData.SandWhichAndMeals;
   return (
     <View style={styles.mainContainer}>
@@ -33,12 +33,17 @@ const ItemGroupNav = () => {
 
 const MenuItem = ({ props, navigation }) => {
   const { title, img, featured, standardPrice, mealPrice } = props;
-  const navigate = () => navigation.navigate('Item');
+  const navigate = () => navigation.navigate(ITEM);
   return (
     <TouchableOpacity style={styles.menuItemContainer} onPress={navigate}>
-      <View style={styles.menuItemImage}>
-        <Text>{'img'}</Text>
-      </View>
+      <Image
+        style={styles.menuItemImage}
+        source={{
+          uri:
+            img ||
+            'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
+        }}
+      />
       <View style={styles.menuItemText}>
         {!!featured && <Text> Featured </Text>}
         <Text style={{ fontWeight: 'bold' }}>{title}</Text>
@@ -61,9 +66,8 @@ const MenuItem = ({ props, navigation }) => {
 };
 
 //TODO is to design some cool UI and breaking down at the mcDonald makeup
-const MakeMeAMeal = ({ prop }) => {};
 const WantSomethingElse = ({ navigation }) => {
-  const navigateOrder = () => navigation.navigate('Order');
+  const navigateOrder = () => navigation.navigate(ORDER);
   return (
     <View style={styles.textContainer}>
       <Text> Want Something Else?</Text>
