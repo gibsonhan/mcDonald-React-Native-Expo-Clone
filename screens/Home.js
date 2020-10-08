@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import axios from 'axios';
+
+import { fetchList } from '../util/service';
+import { MENU } from '../global/reserveWord';
 
 import AnnoucementCard from '../components/AnnoucmentCard';
 import CarouselCard from '../components/CarouselCard';
@@ -24,18 +26,14 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     async function fetchMenu() {
-      let response = await axios.get('http://localhost:3001/api/menu');
-      let responseMenu = response.data.filter((item) =>
+      let response = await fetchList(MENU);
+      let responseMenu = response.filter((item) =>
         homeMenu.includes(item.name),
       );
       setMenu(responseMenu);
     }
     fetchMenu();
   }, []);
-
-  useEffect(() => {
-    console.log(menu);
-  }, [menu]);
 
   return (
     <SafeAreaView style={styles.container}>

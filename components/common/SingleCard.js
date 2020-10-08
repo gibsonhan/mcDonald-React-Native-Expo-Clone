@@ -32,7 +32,7 @@ const SingleCard = ({ props, navigation }) => {
         <View style={styles.btnContainer}>
           <Btn
             text={btnText}
-            color={btnColor}
+            color={`${GlobalColor[btnColor]}`}
             textColor={btnTextColor}
             onPress={() => navigation.navigate(navLink)}
           />
