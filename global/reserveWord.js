@@ -14,7 +14,12 @@ const TREND = 'trend';
 
 const BASEURL = 'http://localhost:3001/api/';
 
+//reducer & context
+const SET_INITIAL = 'set_initial';
+const ADD_ITEM = 'add_item';
+
 export {
+  ADD_ITEM,
   BASEURL,
   COUPON,
   DEALS,
@@ -26,6 +31,7 @@ export {
   MORE,
   ORDER,
   RECENT,
+  SET_INITIAL,
   TREND,
   QRCODE,
 };

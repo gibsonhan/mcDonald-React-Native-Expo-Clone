@@ -33,6 +33,7 @@ const ItemGroupNav = () => {
 
 const MenuItem = ({ props, navigation }) => {
   const { title, img, featured, standardPrice, mealPrice } = props;
+  console.log(props);
   const navigate = () => navigation.navigate(ITEM);
   return (
     <TouchableOpacity style={styles.menuItemContainer} onPress={navigate}>

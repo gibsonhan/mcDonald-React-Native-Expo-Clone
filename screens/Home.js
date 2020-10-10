@@ -10,6 +10,8 @@ import OrderCard from '../components/OrderCard';
 import RewardCard from '../components/RewardCard';
 import Trending from '../components/Trending';
 
+import { useAppContext } from '../state/context';
+
 const homeMenu = [
   'Sandwiches & Meals',
   'Happy Meal',
