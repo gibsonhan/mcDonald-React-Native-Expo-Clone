@@ -6,37 +6,16 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { COUPON } from '../global/reserveWord';
 import GlobalColor from '../style/Color';
 import GlobalText from '../style/Text';
-
-const DealList = [
-  {
-    title: '2 for $3 McChicken or McDouble',
-    titleContext: 'Daily Deal!',
-    expiration: 'today',
-    ribbonTxt: 'Daily Deal!',
-    qrcode: '',
-  },
-  {
-    title: 'Buy one Breakfast Sandwich, get one FREE',
-    titleContext: 'Breakfast Hours Only',
-    expiration: 'today',
-    ribbonTxt: 'Daily Deal!',
-    qrcode: '',
-  },
-  {
-    title: 'Buy a Combo Meal, get a McFlurry Free',
-    titleContext: 'Daily Deal!',
-    expiration: 'today',
-    ribbonTxt: 'Daily Deal!',
-    qrcode: '',
-  },
-];
+import { useAppContext } from '../state/context';
 
 const Deals = ({ navigation }) => {
+  const { state } = useAppContext();
+  console.log('state check', state[COUPON]);
   return (
     <View style={styles.mainContainer}>
       <RewardCard />
       <FlatList
-        data={DealList}
+        data={state[COUPON]}
         keyExtractor={(item) => item.title}
         renderItem={({ item }) => (
           <CouponTicket props={item} navigation={navigation} />
@@ -53,8 +32,7 @@ const Deals = ({ navigation }) => {
 };
 
 const CouponTicket = ({ route, navigation, props }) => {
-  const { title, titleContext, expiration } = props;
-  console.log('route', route);
+  const { title, titleContent, expiration } = props;
   return (
     <TouchableOpacity
       style={styles.couponContainer}
@@ -70,7 +48,7 @@ const CouponTicket = ({ route, navigation, props }) => {
           <Text style={[GlobalText.h3, { color: `${GlobalColor.red}` }]}>
             {title}
           </Text>
-          <Text style={{ marginTop: 4 }}>{titleContext}</Text>
+          <Text style={{ marginTop: 4 }}>{titleContent}</Text>
         </View>
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text style={[GlobalText.s, { color: `${GlobalColor.grey}` }]}>

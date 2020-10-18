@@ -15,7 +15,7 @@ const AnnoucmentCard = ({ navigation }) => {
         titleContent: 'Order extra in the App',
         btnText: 'Start Order',
         btnColor: `${GlobalColor.yellow}`,
-        navLink: 'Order',
+        navLink: 'order',
         dateRestriction: 'None',
         legal:
           "Mobile Order & Pay at participating McDonald's. McD App registration required. © 2020 McDonald's",
@@ -27,7 +27,7 @@ const AnnoucmentCard = ({ navigation }) => {
         titleContent2: '$1 Mobile Order & Pay purchase',
         btnText: 'View Deals',
         btnColor: `${GlobalColor.lightGrey}`,
-        navLink: 'Deals',
+        navLink: 'deals',
         dateRestriction: 'Friday',
         legal:
           "Get free Medium Fries with a minium $1 Mobile Order & Pay purchase, tax excl. Valid 1x/ Friday thru 9/27 at participating McD. Mobile Order & Pay at participating McD. McD app registration required. © 2020 McDonald's ",
@@ -39,7 +39,7 @@ const AnnoucmentCard = ({ navigation }) => {
         titleContent: 'Sitback & amswer 1 email',
         btnText: 'Start Order',
         btnColor: `${GlobalColor.yellow}`,
-        navLink: 'Order',
+        navLink: 'order',
         dateRestriction: 'None',
         legal:
           "Mobile Order & Pay at participating McDonald's. McD App registration required. © 2020 McDonald's",

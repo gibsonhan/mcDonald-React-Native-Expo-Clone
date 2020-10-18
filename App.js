@@ -36,7 +36,7 @@ export default function App() {
   return (
     <AppProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={ITEM}>
+        <Stack.Navigator initialRouteName={HOME}>
           {/**Main Screen */}
           <Stack.Screen name={HOME} component={Home} />
           {/*Think about when is it benefical to pass param on the screen level*/}
