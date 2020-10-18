@@ -13,7 +13,7 @@ import Trending from '../components/Trending';
 import { useAppContext } from '../state/context';
 
 const homeMenu = [
-  'Sandwiches & Meals',
+  'Sandwhich & Meals',
   'Happy Meal',
   'Mc Cafe',
   'Fries, Sides, & More',
