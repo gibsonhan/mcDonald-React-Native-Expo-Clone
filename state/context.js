@@ -1,5 +1,15 @@
-import React, { useContext, useReducer, useMemo } from 'react';
-import { ADD_ITEM, SET_INITIAL } from '../global/reserveWord';
+import React, { useContext, useReducer, useMemo, useEffect } from 'react';
+import {
+  ADD_ITEM,
+  COUPON,
+  HERO,
+  ITEM,
+  MENU,
+  SET_INITIAL,
+  TREND,
+} from '../global/reserveWord';
+
+import { fetchAll } from '../util/service';
 
 const initalState = {
   checkout: [],
@@ -11,13 +21,17 @@ const initalState = {
   recentOrder: [],
 };
 
+function init(state) {
+  return { ...initalState, ...state };
+}
+
 function reducer(state, action) {
   const { payload } = action;
-  const { type } = payload;
+  const { data, type } = payload;
 
   switch (action.type) {
     case SET_INITIAL:
-      return state;
+      return init(data);
     default:
       throw new Error();
   }
@@ -38,6 +52,16 @@ const AppProvider = ({ children }) => {
     });
   };
 
+  const dispatch_setInitial = (data) => {
+    dispatch({
+      type: SET_INITIAL,
+      payload: {
+        type: 'NONE',
+        data: data,
+      },
+    });
+  };
+
   const values = useMemo(
     () => ({
       dispatch_additem,
@@ -45,6 +69,18 @@ const AppProvider = ({ children }) => {
     }),
     [dispatch_additem, state],
   );
+
+  useEffect(() => {
+    const types = [COUPON, HERO, ITEM, MENU, TREND];
+    (async () => {
+      let list = await fetchAll(types);
+      dispatch_setInitial(list);
+    })();
+  }, []);
+
+  useEffect(() => {
+    console.log('state check', state);
+  }, [state]);
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
 };

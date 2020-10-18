@@ -9,6 +9,7 @@ const RECENT = 'recent';
 const ORDER = 'order';
 const QRCODE = 'qrcode';
 
+const HERO = 'hero';
 const MENU = 'menu';
 const TREND = 'trend';
 
@@ -24,6 +25,7 @@ export {
   COUPON,
   DEALS,
   ERROR,
+  HERO,
   HOME,
   ITEM,
   MENU,

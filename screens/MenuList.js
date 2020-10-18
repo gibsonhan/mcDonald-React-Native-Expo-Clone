@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet, FlatList } from 'react-native';
 
 import GlobalText from '../style/Text';
 import GlobalColor from '../style/Color';
+import { MENU } from '../global/reserveWord';
 
 import tempData from '../data/menuList';
+import { fetchList } from '../util/service';
 import { ITEM, ORDER } from '../global/reserveWord';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const MenuList = ({ route, navigation, props }) => {
-  const data = tempData.SandWhichAndMeals;
+  const [menu, setMenu] = useState([]);
+  useEffect(() => {
+    let subMenus = route.params.data;
+    console.log(subMenus);
+  }, []);
+
   return (
     <View style={styles.mainContainer}>
       <View style={styles.listContainer}>
-        {!!tempData.itemGroup && <ItemGroupNav props={tempData.itemGroup} />}
         <FlatList
-          data={data}
+          data={menu}
           keyExtractor={(item) => item.title}
           renderItem={({ item }) => (
             <MenuItem props={item} navigation={navigation} />
@@ -27,41 +33,16 @@ const MenuList = ({ route, navigation, props }) => {
   );
 };
 
-const ItemGroupNav = () => {
-  return <View>If there is a Menu Group Nav</View>;
-};
-
 const MenuItem = ({ props, navigation }) => {
-  const { title, img, featured, standardPrice, mealPrice } = props;
-  console.log(props);
-  const navigate = () => navigation.navigate(ITEM);
   return (
     <TouchableOpacity style={styles.menuItemContainer} onPress={navigate}>
       <Image
         style={styles.menuItemImage}
         source={{
-          uri:
-            img ||
-            'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
+          uri: 'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
         }}
       />
-      <View style={styles.menuItemText}>
-        {!!featured && <Text> Featured </Text>}
-        <Text style={{ fontWeight: 'bold' }}>{title}</Text>
-        <Text>
-          {'$' + standardPrice.price + ' ' + standardPrice.cal + ' Cal.'}
-        </Text>
-        <Text> Meal </Text>
-        <Text>
-          {'$' +
-            mealPrice.price +
-            ' ' +
-            mealPrice.cal[0] +
-            ' - ' +
-            mealPrice.cal[1] +
-            ' Cal.'}
-        </Text>
-      </View>
+      <View style={styles.menuItemText}></View>
     </TouchableOpacity>
   );
 };
