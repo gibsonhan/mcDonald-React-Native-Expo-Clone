@@ -9,31 +9,47 @@ import tempData from '../data/menuList';
 import { fetchList } from '../util/service';
 import { ITEM, ORDER } from '../global/reserveWord';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useAppContext } from '../state/context';
 
 const MenuList = ({ route, navigation, props }) => {
-  const [menu, setMenu] = useState([]);
-  useEffect(() => {
-    let subMenus = route.params.data;
-    console.log(subMenus);
-  }, []);
+  const { state } = useAppContext();
+  const { subMenu } = route.params.data;
+  const ITEMS = state[ITEM];
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.listContainer}>
-        <FlatList
-          data={menu}
-          keyExtractor={(item) => item.title}
-          renderItem={({ item }) => (
-            <MenuItem props={item} navigation={navigation} />
-          )}
-          ListFooterComponent={<WantSomethingElse navigation={navigation} />}
-        />
+        {subMenu.map((menu) => {
+          //create an array with submenID
+          let subMenuId = menu.items.map((item) => item.id);
+          //create a new array, with additional information of ids
+          let data = ITEMS.filter((item) => subMenuId.includes(item.id));
+          return (
+            <FlatList
+              data={data}
+              keyExtractor={(item) => item.name}
+              renderItem={({ item }) => {
+                return <MenuItem props={item} navigation={navigation} />;
+              }}
+              ListHeaderComponent={
+                subMenu.length > 1 && <Text>{menu.name}</Text>
+              }
+            />
+          );
+        })}
+        <WantSomethingElse navigation={navigation} />
       </View>
     </View>
   );
 };
 
 const MenuItem = ({ props, navigation }) => {
+  const { name } = props;
+  const navigate = () =>
+    navigation.navigate(ITEM, {
+      title: props.name,
+      data: props,
+    });
   return (
     <TouchableOpacity style={styles.menuItemContainer} onPress={navigate}>
       <Image
@@ -42,7 +58,9 @@ const MenuItem = ({ props, navigation }) => {
           uri: 'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
         }}
       />
-      <View style={styles.menuItemText}></View>
+      <View style={styles.menuItemText}>
+        <Text>{name}</Text>
+      </View>
     </TouchableOpacity>
   );
 };

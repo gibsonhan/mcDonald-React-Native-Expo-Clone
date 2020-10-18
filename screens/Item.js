@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Item = () => {
+const Item = ({ route }) => {
+  console.log('what is route?', route.params.data);
   const customized = true; // if the object has customize then add true
   return (
     <View style={styles.mainContainer}>

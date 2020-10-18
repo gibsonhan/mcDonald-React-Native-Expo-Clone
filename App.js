@@ -62,7 +62,7 @@ export default function App() {
           <Stack.Screen
             name={ITEM}
             component={Item}
-            options={({ route }) => ({ title: ITEM })}
+            options={({ route }) => ({ title: route.params.title })}
           />
           <Stack.Screen
             name={MENULIST}
