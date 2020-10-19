@@ -1,98 +1,85 @@
 import React, { useState, useEffect } from 'react';
 
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Btn from '../components/common/Btn';
+
+import GlobalText from '../style/Text';
+import GlobalColor from '../style/Color';
+import { Directions } from 'react-native-gesture-handler';
 
 const Item = ({ route }) => {
-  console.log('what is route?', route.params.data);
   const customized = true; // if the object has customize then add true
+  const [fav, setFav] = useState(false);
+
+  const handleFavCAT = () => {
+    console.log('hello world');
+    setFav((prev) => !prev);
+  };
+
+  const favCATText = !fav ? 'Favorite' : 'UnFavorite';
+
   return (
     <View style={styles.mainContainer}>
-      <ItemInfo />
-      {customized && <CustomizeCAT />}
-      <FavoriteCAT />
-      <QuantityCAT />
-    </View>
-  );
-};
-
-const ItemInfo = () => {
-  return (
-    <View>
-      <Text>IMage</Text>
-      <Text>DropDownMenu For Size</Text>
-      <Text>Price and Calories</Text>
-      <Text>Customize</Text>
-    </View>
-  );
-};
-
-const CustomizeCAT = () => {
-  return (
-    <View>
-      <Text>Customize</Text>
-    </View>
-  );
-};
-
-const FavoriteCAT = () => {
-  const [displayFav, setDisplayFav] = useState(true);
-  function toggleFavorite() {
-    setDisplayFav((prev) => !prev);
-  }
-  return (
-    <TouchableOpacity onPress={() => toggleFavorite()}>
-      <Text> Star</Text>
-      {console.log(displayFav)}
-      {displayFav && <AddToFav />}
-      {!displayFav && <Favorite />}
-    </TouchableOpacity>
-  );
-};
-
-const AddToFav = () => {
-  return (
-    <View>
-      <Text> Hallow Star</Text>
-      <Text> Add To Favorite </Text>
-    </View>
-  );
-};
-
-const Favorite = () => {
-  return (
-    <View>
-      <Text>Start Animation</Text>
-      <Text> Favorited</Text>
-    </View>
-  );
-};
-
-const QuantityCAT = () => {
-  const [quant, setQuant] = useState(1);
-
-  function updateQuantity(type) {
-    type === 'increase'
-      ? setQuant((prev) => prev + 1)
-      : setQuant((prev) => {
-          return prev === 0 ? 0 : prev - 1;
-        });
-  }
-
-  const increase = () => updateQuantity('increase');
-  const decrease = () => updateQuantity('decrease');
-
-  return (
-    <View>
-      <Text>Quantity</Text>
-      <View>
-        <TouchableOpacity onPress={decrease}>
-          <Text> - </Text>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity style={styles.header__goBack}>
+          <Text>X</Text>
         </TouchableOpacity>
-        <Text>{quant} </Text>
-        <TouchableOpacity onPress={increase}>
-          <Text> + </Text>
+        <Text>{'Name-of-Item'}</Text>
+        <View style={styles.header__itemInfo}>
+          <Text>{'Price'}</Text>
+          <Text>{'Calories'}</Text>
+        </View>
+        <TouchableOpacity style={styles.header__favCAT} onPress={handleFavCAT}>
+          <Text>{favCATText}</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.imgContainer}>
+        <Image
+          style={styles.img}
+          source={{
+            uri: 'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
+          }}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <QuanityButton />
+        <Btn text="Cutomize Ingridents" color={GlobalColor.yellow} />
+      </View>
+      <View style={styles.infoContainer}>
+        <Btn text="Nutrition & Ingredients" color={GlobalColor.yellow} />
+        <Text>
+          2000 calories a day is used for general nutrition advice, but calore
+          needs vary. Additional nutrition information avavailable upon request.
+          Calories shown do not reflect customization
+        </Text>
+      </View>
+      <View style={styles.catContainer}>
+        <Btn text="Add To Bag" color={GlobalColor.yellow} />
+      </View>
+    </View>
+  );
+};
+
+const QuanityButton = () => {
+  const [quant, setQuant] = useState(1);
+  const handlePlus = () => {
+    setQuant((prev) => prev + 1);
+  };
+
+  const handleSubtract = () => {
+    setQuant((prev) => {
+      return prev === 1 ? 1 : prev - 1;
+    });
+  };
+  return (
+    <View style={styles.quantContainer}>
+      <TouchableOpacity style={styles.sub} onPress={handleSubtract}>
+        <Text style={[GlobalText.l]}> - </Text>
+      </TouchableOpacity>
+      <View style={[GlobalText.l, styles.count]}>{quant}</View>
+      <TouchableOpacity style={styles.plus} onPress={handlePlus}>
+        <Text style={[GlobalText.l]}> + </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -100,8 +87,74 @@ const QuantityCAT = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    flexDirection: 'column',
+    marginHorizontal: 24,
+  },
+  headerContainer: {
+    flex: 1.5,
+    backgroundColor: 'green',
+  },
+  header__goBack: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    height: 60,
+    width: 60,
+    backgroundColor: 'red',
+    margin: 10,
+  },
+  header__itemInfo: {
+    flexDirection: 'row',
+  },
+  header__favCAT: {
+    flexDirection: 'row',
+  },
+  imgContainer: {
+    flex: 3,
+    backgroundColor: 'blue',
+  },
+  img: {
+    flex: 1,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    flex: 1,
+    backgroundColor: 'yellow',
+  },
+  infoContainer: {
+    flex: 1.5,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  catContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+  },
+  quantContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: 200,
+    height: 50,
+    borderWidth: 1.25,
+    borderRadius: 25,
+  },
+  sub: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  quant: {
+    flex: 1,
+    backgroundColor: 'red',
+  },
+  plus: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 
