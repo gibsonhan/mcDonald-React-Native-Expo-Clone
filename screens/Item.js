@@ -8,15 +8,18 @@ import GlobalColor from '../style/Color';
 import { Directions } from 'react-native-gesture-handler';
 
 const Item = ({ route }) => {
-  const customized = true; // if the object has customize then add true
+  const { img, list, name, size } = route.params.data;
+  const [currSize, setCurrSize] = useState('regular');
   const [fav, setFav] = useState(false);
 
+  const calories = size[currSize].cal + ' cal.';
+  const favCATText = !fav ? 'Favorite' : 'UnFavorite';
+  const imgURI = img[currSize + 'Img'];
+  const price = '$' + size[currSize].price + ' ';
+
   const handleFavCAT = () => {
-    console.log('hello world');
     setFav((prev) => !prev);
   };
-
-  const favCATText = !fav ? 'Favorite' : 'UnFavorite';
 
   return (
     <View style={styles.mainContainer}>
@@ -24,10 +27,10 @@ const Item = ({ route }) => {
         <TouchableOpacity style={styles.header__goBack}>
           <Text>X</Text>
         </TouchableOpacity>
-        <Text>{'Name-of-Item'}</Text>
+        <Text>{name}</Text>
         <View style={styles.header__itemInfo}>
-          <Text>{'Price'}</Text>
-          <Text>{'Calories'}</Text>
+          <Text>{price}</Text>
+          <Text>{calories}</Text>
         </View>
         <TouchableOpacity style={styles.header__favCAT} onPress={handleFavCAT}>
           <Text>{favCATText}</Text>
@@ -37,7 +40,9 @@ const Item = ({ route }) => {
         <Image
           style={styles.img}
           source={{
-            uri: 'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
+            uri:
+              imgURI ||
+              'https://homepages.cae.wisc.edu/~ece533/images/arctichare.png',
           }}
         />
       </View>

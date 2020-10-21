@@ -36,7 +36,7 @@ export default function App() {
   return (
     <AppProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={ITEM}>
+        <Stack.Navigator initialRouteName={HOME}>
           {/**Main Screen */}
           <Stack.Screen name={HOME} component={Home} />
           {/*Think about when is it benefical to pass param on the screen level*/}
@@ -62,7 +62,7 @@ export default function App() {
           <Stack.Screen
             name={ITEM}
             component={Item}
-            //options={({ route }) => ({ title: route.params.title || 'no title' })}
+            options={({ route }) => ({ title: route.params.title })}
           />
           <Stack.Screen
             name={MENULIST}
